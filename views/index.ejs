@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <h1>TODO</h1>
+    <form action="/add" method="post">
+      <input type="text" name="newTodo" id="int" placeholder="Enter Task">
+      <button type="submit" id="btn">Add Task</button>
+    </form>
+    <ol>
+      <% todos.forEach(task => { %>
+        <li>
+          <span><%= task %></span>
+          <form action="/delete" method="post">
+            <input type="hidden" name="taskToDelete" value="<%= task %>">
+            <button type="submit" id="btn1">Delete</button>
+          </form>
+          <form action="/edit" method="post">
+            <input type="text" name="editedTask" id="int1" placeholder="Edit Task" value="<%= task %>">
+            <input type="hidden" name="taskToEdit" value="<%= task %>">
+            <button type="submit" id="btn1">Edit</button>
+          </form>
+        </li>
+      <% }) %>
+    </ol>
+  </body>
+</html>
